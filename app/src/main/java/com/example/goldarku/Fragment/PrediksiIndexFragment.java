@@ -6,24 +6,28 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.example.goldarku.Activity.PrediksiGoldar;
 import com.example.goldarku.R;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link MenuFragment.OnFragmentInteractionListener} interface
+ * {@link PrediksiIndexFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
  */
-public class MenuFragment extends Fragment {
+public class PrediksiIndexFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public MenuFragment() {
+    public PrediksiIndexFragment() {
         // Required empty public constructor
     }
 
@@ -32,30 +36,30 @@ public class MenuFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_menu, container, false);
-        Button prediksiButton =view.findViewById(R.id.button_prediksi);
-        Button donorButton =view.findViewById(R.id.button_donor);
-        // sisipkan register event click nanti di sini.
-        prediksiButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mListener != null) {
-                    mListener.onPrediksiButtonClicked();
-                }
-            }
-        });
-        donorButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mListener != null) {
-                    mListener.onDonorButtonClicked();
-                }
-            }
-        });
+        View view = inflater.inflate(R.layout.fragment_prediksi_index, container, false);
+        final EditText Text_GoldarIbu = view.findViewById((R.id.input_goldaribu));
+        final EditText Text_GoldarAyah = view.findViewById((R.id.input_goldarayah));
 
+        Button buttonPrediksi = view.findViewById(R.id.button_prediksi);
+        buttonPrediksi.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                if(mListener !=null){
+                    String GolIbuString = Text_GoldarIbu.getText().toString();
+                    String GolAyahString = Text_GoldarAyah.getText().toString();
+                    if(!TextUtils.isEmpty(GolIbuString, GolAyahString)){
+                        PrediksiGoldar prediksiGoldar = new PrediksiGoldar(Golaribu, GolAyah);
+                        mListener.onPrediksiButtonClicked(prediksiGoldar.getGolAnak());
+                    }else{
+                        Toast.makeText(getActivity(), "Isi Golongan Darah Ibu dan Ayah", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
         return view;
     }
 
+    // TODO: Rename method, update argument and hook method into UI event
 
     @Override
     public void onAttach(Context context) {
@@ -86,7 +90,6 @@ public class MenuFragment extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onPrediksiButtonClicked();
-        void onDonorButtonClicked();
+        void onPrediksiButtonClicked(String GolAnak);
     }
 }

@@ -10,14 +10,23 @@ import android.view.MenuItem;
 
 import com.example.goldarku.Activity.WelcomeActivity;
 import com.example.goldarku.Fragment.AboutFragment;
+import com.example.goldarku.Fragment.MenuFragment;
+import com.example.goldarku.Fragment.PrediksiIndexFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements
+        MenuFragment.OnFragmentInteractionListener,
+        PrediksiIndexFragment.OnFragmentInteractionListener {
 
     private AboutFragment aboutFragment;
+    private MenuFragment menuFragment;
+    private PrediksiIndexFragment prediksiIndexFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         aboutFragment = AboutFragment.newInstance("Gideon Mei Ditama");
+        menuFragment = new MenuFragment();
+        prediksiIndexFragment = new PrediksiIndexFragment();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         new Handler().postDelayed(new Runnable() {
@@ -39,7 +48,26 @@ public class MainActivity extends AppCompatActivity {
                     .addToBackStack(null)
                     .commit();
         }
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, menuFragment)
+                .commit();
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onPrediksiButtonClicked() {
+
+    }
+
+    @Override
+    public void onDonorButtonClicked() {
+
+    }
+
+    @Override
+    public void onPrediksiButtonClicked(String GolAnak) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, prediksiIndexFragment)
+                .commit();
+    }
 }
