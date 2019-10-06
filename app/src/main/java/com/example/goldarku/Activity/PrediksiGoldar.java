@@ -5,12 +5,11 @@ public class PrediksiGoldar {
     private String GolIbu;
     private String GolAyah;
     private String GolAnak;
-    private String A,B,AB,O;
 
-    public PrediksiGoldar(String GolIbu, String GolAyah, String GolAnak){
+    public PrediksiGoldar(String GolIbu, String GolAyah){
         this.GolIbu = GolIbu;
         this.GolAyah = GolAyah;
-        this.GolAnak = GolAnak;
+        this.GolAnak = prediksi();
     }
 
     public String getGolAnak() {
@@ -20,13 +19,16 @@ public class PrediksiGoldar {
     private String prediksi() {
         if (GolIbu == "A" && GolAyah == "A") {
             GolAnak = "A";
+            return GolAnak;
         }else if (GolIbu == "B" && GolAyah == "B") {
             GolAnak = "B";
+            return GolAnak;
         }else if(GolIbu=="AB"&&GolAyah=="AB") {
             GolAnak = "A, B, AB";
+            return GolAnak;
         }else if(GolIbu=="O"&&GolAyah=="O") {
             GolAnak = "O";
-        }
-        return GolAnak;
+            return GolAnak;
+        }return getGolAnak();
     }
 }

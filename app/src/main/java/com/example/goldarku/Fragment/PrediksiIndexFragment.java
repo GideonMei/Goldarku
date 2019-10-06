@@ -37,18 +37,20 @@ public class PrediksiIndexFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_prediksi_index, container, false);
-        final EditText Text_GoldarIbu = view.findViewById((R.id.input_goldaribu));
-        final EditText Text_GoldarAyah = view.findViewById((R.id.input_goldarayah));
+        final EditText Text_GolDarIbu = view.findViewById((R.id.input_goldaribu));
+        final EditText Text_GolDarAyah = view.findViewById((R.id.input_goldarayah));
 
         Button buttonPrediksi = view.findViewById(R.id.button_prediksi);
         buttonPrediksi.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 if(mListener !=null){
-                    String GolIbuString = Text_GoldarIbu.getText().toString();
-                    String GolAyahString = Text_GoldarAyah.getText().toString();
-                    if(!TextUtils.isEmpty(GolIbuString, GolAyahString)){
-                        PrediksiGoldar prediksiGoldar = new PrediksiGoldar(Golaribu, GolAyah);
+                    String GolIbuString = Text_GolDarIbu.getText().toString();
+                    String GolAyahString = Text_GolDarAyah.getText().toString();
+                    if(!TextUtils.isEmpty(GolAyahString)&&!TextUtils.isEmpty(GolIbuString)){
+                        String GolIbu = GolIbuString;
+                        String GolAyah = GolAyahString;
+                        PrediksiGoldar prediksiGoldar = new PrediksiGoldar(GolIbu,GolAyah);
                         mListener.onPrediksiButtonClicked(prediksiGoldar.getGolAnak());
                     }else{
                         Toast.makeText(getActivity(), "Isi Golongan Darah Ibu dan Ayah", Toast.LENGTH_SHORT).show();

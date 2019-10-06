@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragment.MenuFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="291dp"
-        android:layout_height="297dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:cropToPadding="true"
         android:scaleType="centerInside"
@@ -23,7 +24,6 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:fontFamily="casual"
         android:text="Selamat Datang"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -34,24 +34,22 @@
 
     <Button
         android:id="@+id/button_prediksi"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:text="Prediksi GolDar Anak"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        android:onClick="HandlePrediksi"/>
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
         android:id="@+id/button_donor"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Donor Darah"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        android:onClick="HandleDonor"/>
+        app:layout_constraintTop_toBottomOf="@+id/button_prediksi" />
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

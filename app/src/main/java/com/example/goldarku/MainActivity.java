@@ -25,18 +25,21 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         aboutFragment = AboutFragment.newInstance("Gideon Mei Ditama");
-        menuFragment = new MenuFragment();
-        prediksiIndexFragment = new PrediksiIndexFragment();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent i = new Intent(MainActivity.this, WelcomeActivity.class);
-                startActivity(i);
-                finish();
-            }
-        }, 1000);
+        menuFragment = new MenuFragment();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, menuFragment)
+                .commit();
+        prediksiIndexFragment = new PrediksiIndexFragment();
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                Intent i = new Intent(MainActivity.this, MenuFragment.class);
+//                startActivity(i);
+//                finish();
+//            }
+//        }, 1000);
     }
 
     @Override
@@ -48,14 +51,14 @@ public class MainActivity extends AppCompatActivity implements
                     .addToBackStack(null)
                     .commit();
         }
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, menuFragment)
-                .commit();
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onPrediksiButtonClicked() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, prediksiIndexFragment)
+                .commit();
 
     }
 
