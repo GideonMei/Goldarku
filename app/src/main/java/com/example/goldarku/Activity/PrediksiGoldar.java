@@ -19,16 +19,12 @@ public class PrediksiGoldar {
     private String prediksi() {
         if (GolIbu == "A" && GolAyah == "A") {
             GolAnak = "A";
-            return GolAnak;
         }else if (GolIbu == "B" && GolAyah == "B") {
             GolAnak = "B";
-            return GolAnak;
         }else if(GolIbu=="AB"&&GolAyah=="AB") {
             GolAnak = "A, B, AB";
-            return GolAnak;
         }else if(GolIbu=="O"&&GolAyah=="O") {
             GolAnak = "O";
-            return GolAnak;
         }return getGolAnak();
     }
 }

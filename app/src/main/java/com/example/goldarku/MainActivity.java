@@ -8,18 +8,22 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
 
+import com.example.goldarku.Activity.PrediksiGoldar;
 import com.example.goldarku.Activity.WelcomeActivity;
 import com.example.goldarku.Fragment.AboutFragment;
 import com.example.goldarku.Fragment.MenuFragment;
 import com.example.goldarku.Fragment.PrediksiIndexFragment;
+import com.example.goldarku.Fragment.ResultFragment;
 
 public class MainActivity extends AppCompatActivity implements
         MenuFragment.OnFragmentInteractionListener,
-        PrediksiIndexFragment.OnFragmentInteractionListener {
+        PrediksiIndexFragment.OnFragmentInteractionListener,
+        ResultFragment.OnFragmentInteractionListener {
 
     private AboutFragment aboutFragment;
     private MenuFragment menuFragment;
     private PrediksiIndexFragment prediksiIndexFragment;
+    private ResultFragment resultFragment;
 
 
     @Override
@@ -32,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements
                 .replace(R.id.fragment_container, menuFragment)
                 .commit();
         prediksiIndexFragment = new PrediksiIndexFragment();
+        resultFragment = new ResultFragment();
 //        new Handler().postDelayed(new Runnable() {
 //            @Override
 //            public void run() {
@@ -69,6 +74,14 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void onPrediksiButtonClicked(String GolAnak) {
+        resultFragment.setInformation(String.format("Kemungkinan anak anda memiliki golongan darah", GolAnak));
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, resultFragment)
+                .commit();
+    }
+
+    @Override
+    public void onTryAgainButtonClicked(String tag) {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, prediksiIndexFragment)
                 .commit();
