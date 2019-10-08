@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
@@ -59,12 +60,12 @@ public class MainActivity extends AppCompatActivity implements
         return super.onOptionsItemSelected(item);
     }
 
+
     @Override
     public void onPrediksiButtonClicked() {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, prediksiIndexFragment)
+                .replace(R.id.fragment_container, prediksiIndexFragment,"PREDIKSI")
                 .commit();
-
     }
 
     @Override
@@ -74,16 +75,16 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void onPrediksiButtonClicked(String GolAnak) {
-        resultFragment.setInformation(String.format("Kemungkinan anak anda memiliki golongan darah", GolAnak));
+        resultFragment.setInformation(String.format("Kemungkinan anak anda memiliki golongan darah "+GolAnak));
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, resultFragment)
+                .replace(R.id.fragment_container, resultFragment, "PREDIKSI")
                 .commit();
     }
 
     @Override
     public void onTryAgainButtonClicked(String tag) {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, prediksiIndexFragment)
+                .replace(R.id.fragment_container, prediksiIndexFragment,"PREDIKSI")
                 .commit();
     }
 }

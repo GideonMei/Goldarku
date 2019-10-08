@@ -55,7 +55,7 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Masukkan GolDar Ibu"
-        android:inputType="textPersonName"
+        android:inputType="textCapCharacters"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/text_Goldaribu"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
@@ -77,7 +77,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Masukkan GolDarAyah"
-        android:inputType="textPersonName"
+        android:inputType="textCapCharacters"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.306"
         app:layout_constraintStart_toStartOf="@+id/guideline"

@@ -4,27 +4,56 @@ public class PrediksiGoldar {
 
     private String GolIbu;
     private String GolAyah;
-    private String GolAnak;
+    private String Index;
 
     public PrediksiGoldar(String GolIbu, String GolAyah){
         this.GolIbu = GolIbu;
         this.GolAyah = GolAyah;
-        this.GolAnak = prediksi();
+        this.Index = prediksi();
     }
 
-    public String getGolAnak() {
-        return GolAnak;
+    public  String getIndex(){
+        return Index;
     }
 
-    private String prediksi() {
-        if (GolIbu == "A" && GolAyah == "A") {
-            GolAnak = "A";
-        }else if (GolIbu == "B" && GolAyah == "B") {
-            GolAnak = "B";
-        }else if(GolIbu=="AB"&&GolAyah=="AB") {
-            GolAnak = "A, B, AB";
-        }else if(GolIbu=="O"&&GolAyah=="O") {
+
+    public String prediksi() {
+        String GolAnak="";
+        if (this.GolIbu.equals("A") && this.GolAyah.equals("A")) {
+            GolAnak = "A atau O";
+        }else if (this.GolIbu.equals("B") && this.GolAyah.equals("B")) {
+            GolAnak = "B atau O";
+        }else if(this.GolIbu.equals("AB")&&this.GolAyah.equals("AB")) {
+            GolAnak = "A, B, atau AB";
+        }else if(this.GolIbu.equals("0")&&this.GolAyah.equals("O")) {
             GolAnak = "O";
-        }return getGolAnak();
+        }else if(this.GolIbu.equals("A")&&this.GolAyah.equals("B")) {
+            GolAnak = "A, B, AB, atau O";
+        }else if(this.GolIbu.equals("A")&&this.GolAyah.equals("AB")) {
+            GolAnak = "A, B, atau AB";
+        }else if(this.GolIbu.equals("A")&&this.GolAyah.equals("O")) {
+            GolAnak = "A atau O";
+        }else if(this.GolIbu.equals("B")&&this.GolAyah.equals("A")) {
+            GolAnak = "A, B, AB, atau O";
+        }else if(this.GolIbu.equals("B")&&this.GolAyah.equals("AB")) {
+            GolAnak = "A, B, atau AB";
+        }else if(this.GolIbu.equals("B")&&this.GolAyah.equals("O")) {
+            GolAnak = "B atau O";
+        }else if(this.GolIbu.equals("AB")&&this.GolAyah.equals("A")) {
+            GolAnak = "A, B, atau AB";
+        }else if(this.GolIbu.equals("AB")&&this.GolAyah.equals("B")) {
+            GolAnak = "A, B, atau AB";
+        }else if(this.GolIbu.equals("AB")&&this.GolAyah.equals("O")) {
+            GolAnak = "A atau B";
+        }else if(this.GolIbu.equals("O")&&this.GolAyah.equals("A")) {
+            GolAnak = "A atau O";
+        }else if(this.GolIbu.equals("O")&&this.GolAyah.equals("B")) {
+            GolAnak = "B atau O";
+        }else if(this.GolIbu.equals("O")&&this.GolAyah.equals("AB")) {
+            GolAnak = "A atau B";
+        }else{
+            GolAnak = "Golongan Darah yang anda masukkan SALAH !!!";
+        }
+        return GolAnak;
     }
 }

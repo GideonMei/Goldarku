@@ -9,22 +9,20 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.goldarku.R;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link MenuFragment.OnFragmentInteractionListener} interface
+ * {@link DonorIndexFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
  */
-public class MenuFragment extends Fragment {
+public class DonorIndexFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public MenuFragment() {
+    public DonorIndexFragment() {
         // Required empty public constructor
     }
 
@@ -33,31 +31,15 @@ public class MenuFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_menu, container, false);
-        Button prediksiButton =view.findViewById(R.id.button_prediksi);
-        Button donorButton =view.findViewById(R.id.button_donor);
-        // sisipkan register event click nanti di sini.
-        prediksiButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mListener != null) {
-                    mListener.onPrediksiButtonClicked();
-//                    Toast.makeText(getActivity(),"testts",Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-        donorButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mListener != null) {
-                    mListener.onDonorButtonClicked();
-                }
-            }
-        });
-
-        return view;
+        return inflater.inflate(R.layout.fragment_donor_index, container, false);
     }
 
+    // TODO: Rename method, update argument and hook method into UI event
+    public void onButtonPressed(Uri uri) {
+        if (mListener != null) {
+            mListener.onFragmentInteraction(uri);
+        }
+    }
 
     @Override
     public void onAttach(Context context) {
@@ -88,7 +70,6 @@ public class MenuFragment extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onPrediksiButtonClicked();
-        void onDonorButtonClicked();
+        void onFragmentInteraction(Uri uri);
     }
 }

@@ -33,8 +33,7 @@ public class PrediksiIndexFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_prediksi_index, container, false);
         final EditText Text_GolDarIbu = view.findViewById((R.id.input_goldaribu));
@@ -51,7 +50,7 @@ public class PrediksiIndexFragment extends Fragment {
                         String GolIbu = GolIbuString;
                         String GolAyah = GolAyahString;
                         PrediksiGoldar prediksiGoldar = new PrediksiGoldar(GolIbu,GolAyah);
-                        mListener.onPrediksiButtonClicked(prediksiGoldar.getGolAnak());
+                        mListener.onPrediksiButtonClicked(prediksiGoldar.getIndex());
                     }else{
                         Toast.makeText(getActivity(), "Isi Golongan Darah Ibu dan Ayah", Toast.LENGTH_SHORT).show();
                     }
