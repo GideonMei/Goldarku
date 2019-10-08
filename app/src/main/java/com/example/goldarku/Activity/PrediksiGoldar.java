@@ -52,7 +52,7 @@ public class PrediksiGoldar {
         }else if(this.GolIbu.equals("O")&&this.GolAyah.equals("AB")) {
             GolAnak = "A atau B";
         }else{
-            GolAnak = "Golongan Darah yang anda masukkan SALAH !!!";
+            GolAnak = "- (Inputan Tidak Valid!)";
         }
         return GolAnak;
     }

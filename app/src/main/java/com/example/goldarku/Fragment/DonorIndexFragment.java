@@ -6,10 +6,15 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.example.goldarku.Activity.DonorDarah;
 import com.example.goldarku.R;
 
 /**
@@ -31,15 +36,43 @@ public class DonorIndexFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_donor_index, container, false);
+        View view = inflater.inflate(R.layout.fragment_donor_index, container, false);
+        final EditText Text_usia = view.findViewById((R.id.input_usia));
+        final EditText Text_weight = view.findViewById((R.id.input_weight));
+        final EditText Text_tdDis = view.findViewById((R.id.input_tdDis));
+        final EditText Text_tdSis = view.findViewById((R.id.input_tdSis));
+        final EditText Text_hb = view.findViewById((R.id.input_hb));
+
+        Button buttonDonor = view.findViewById(R.id.button_donor);
+        buttonDonor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mListener !=null){
+                    String UsiaString = Text_usia.getText().toString();
+                    String WeightString = Text_weight.getText().toString();
+                    String tdDisString = Text_tdDis.getText().toString();
+                    String tdSisString = Text_tdSis.getText().toString();
+                    String hbString = Text_hb.getText().toString();
+
+                    if(!TextUtils.isEmpty(UsiaString)&&!TextUtils.isEmpty(WeightString)&&!TextUtils.isEmpty(tdDisString)
+                            &&!TextUtils.isEmpty(tdSisString)&&!TextUtils.isEmpty(hbString)){
+                        int usia = Integer.parseInt(UsiaString);
+                        int weight = Integer.parseInt(WeightString);
+                        int tdDis = Integer.parseInt(tdDisString);
+                        int tdSis = Integer.parseInt(tdSisString);
+                        int hb = Integer.parseInt(hbString);
+                        DonorDarah donorDarah = new DonorDarah(usia, weight, tdDis, tdSis, hb);
+                        mListener.onDonorButtonClicked(donorDarah.getIndex());
+                    }else{
+                        Toast.makeText(getActivity(), "Isi Semua Form Terlebih Dahulu", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+
+        return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
 
     @Override
     public void onAttach(Context context) {
@@ -70,6 +103,6 @@ public class DonorIndexFragment extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onDonorButtonClicked(String hasil);
     }
 }

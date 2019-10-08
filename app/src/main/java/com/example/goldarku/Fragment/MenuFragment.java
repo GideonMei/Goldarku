@@ -42,7 +42,6 @@ public class MenuFragment extends Fragment {
             public void onClick(View view) {
                 if (mListener != null) {
                     mListener.onPrediksiButtonClicked();
-//                    Toast.makeText(getActivity(),"testts",Toast.LENGTH_SHORT).show();
                 }
             }
         });

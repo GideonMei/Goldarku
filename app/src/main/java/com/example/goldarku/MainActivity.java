@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import com.example.goldarku.Activity.PrediksiGoldar;
 import com.example.goldarku.Activity.WelcomeActivity;
 import com.example.goldarku.Fragment.AboutFragment;
+import com.example.goldarku.Fragment.DonorIndexFragment;
 import com.example.goldarku.Fragment.MenuFragment;
 import com.example.goldarku.Fragment.PrediksiIndexFragment;
 import com.example.goldarku.Fragment.ResultFragment;
@@ -19,11 +20,13 @@ import com.example.goldarku.Fragment.ResultFragment;
 public class MainActivity extends AppCompatActivity implements
         MenuFragment.OnFragmentInteractionListener,
         PrediksiIndexFragment.OnFragmentInteractionListener,
+        DonorIndexFragment.OnFragmentInteractionListener,
         ResultFragment.OnFragmentInteractionListener {
 
     private AboutFragment aboutFragment;
     private MenuFragment menuFragment;
     private PrediksiIndexFragment prediksiIndexFragment;
+    private DonorIndexFragment donorIndexFragment;
     private ResultFragment resultFragment;
 
 
@@ -37,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements
                 .replace(R.id.fragment_container, menuFragment)
                 .commit();
         prediksiIndexFragment = new PrediksiIndexFragment();
+        donorIndexFragment = new DonorIndexFragment();
         resultFragment = new ResultFragment();
 //        new Handler().postDelayed(new Runnable() {
 //            @Override
@@ -64,13 +68,17 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void onPrediksiButtonClicked() {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, prediksiIndexFragment,"PREDIKSI")
+                .replace(R.id.fragment_container, prediksiIndexFragment)
+                .addToBackStack(null)
                 .commit();
     }
 
     @Override
     public void onDonorButtonClicked() {
-
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, donorIndexFragment)
+                .addToBackStack(null)
+                .commit();
     }
 
     @Override
@@ -78,13 +86,29 @@ public class MainActivity extends AppCompatActivity implements
         resultFragment.setInformation(String.format("Kemungkinan anak anda memiliki golongan darah "+GolAnak));
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, resultFragment, "PREDIKSI")
+                .addToBackStack(null)
                 .commit();
     }
 
     @Override
     public void onTryAgainButtonClicked(String tag) {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, prediksiIndexFragment,"PREDIKSI")
-                .commit();
+        if (tag.equals("PREDIKSI")) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, prediksiIndexFragment)
+                    .commit();
+        } else if (tag.equals("DONOR")) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, donorIndexFragment)
+                    .commit();
+        }
+    }
+
+    @Override
+    public void onDonorButtonClicked(String hasil) {
+            resultFragment.setInformation(String.format("Anda "+hasil+" untuk melakukan donor darah"));
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, resultFragment, "DONOR")
+                    .addToBackStack(null)
+                    .commit();
     }
 }
