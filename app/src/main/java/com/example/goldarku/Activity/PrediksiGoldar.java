@@ -25,7 +25,7 @@ public class PrediksiGoldar {
             GolAnak = "B atau O";
         }else if(this.GolIbu.equals("AB")&&this.GolAyah.equals("AB")) {
             GolAnak = "A, B, atau AB";
-        }else if(this.GolIbu.equals("0")&&this.GolAyah.equals("O")) {
+        }else if(this.GolIbu.equals("O")&&this.GolAyah.equals("O")) {
             GolAnak = "O";
         }else if(this.GolIbu.equals("A")&&this.GolAyah.equals("B")) {
             GolAnak = "A, B, AB, atau O";
