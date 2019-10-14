@@ -5,6 +5,7 @@
     android:id="@+id/frameLayout5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".Fragment.DonorIndexFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -15,7 +16,8 @@
         android:layout_marginTop="24dp"
         android:fontFamily="casual"
         android:text="Donor Darah"
-        android:textSize="18sp"
+        android:textColor="#000000"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,6 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Usia"
+        android:textColor="#000000"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
@@ -54,7 +57,7 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Masukkan usia"
-        android:inputType="textCapCharacters"
+        android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -66,6 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Berat Badan"
+        android:textColor="#000000"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_usia" />
@@ -77,7 +81,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Masukkan berat badan (kg)"
-        android:inputType="textCapCharacters"
+        android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -88,7 +92,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="100dp"
+        android:backgroundTint="#00FF3131"
+        android:backgroundTintMode="src_in"
         android:text="Cek"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -100,10 +107,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:text="Tekanan Darah Diastole"
+        android:textColor="#000000"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintHorizontal_bias="0.133"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_weight" />
+        app:layout_constraintTop_toBottomOf="@id/text_tdSis" />
 
     <TextView
         android:id="@+id/text_tdSis"
@@ -112,10 +120,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:text="Tekanan Darah Sistole"
+        android:textColor="#000000"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintHorizontal_bias="0.133"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_tdDis" />
+        app:layout_constraintTop_toBottomOf="@id/text_weight" />
 
     <TextView
         android:id="@+id/text_hb"
@@ -123,9 +132,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Hemoglobin"
+        android:textColor="#000000"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_tdSis" />
+        app:layout_constraintTop_toBottomOf="@id/text_tdDis" />
 
     <EditText
         android:id="@+id/input_tdDis"
@@ -134,11 +144,11 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Masukkan TD Diastole"
-        android:inputType="textPersonName"
+        android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/input_weight" />
+        app:layout_constraintTop_toBottomOf="@id/input_tdSis" />
 
     <EditText
         android:id="@+id/input_tdSis"
@@ -147,11 +157,11 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Masukkan TD Sistole"
-        android:inputType="textPersonName"
+        android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/input_tdDis" />
+        app:layout_constraintTop_toBottomOf="@id/input_weight" />
 
     <EditText
         android:id="@+id/input_hb"
@@ -160,10 +170,22 @@
         android:layout_marginTop="4dp"
         android:ems="10"
         android:hint="Masukkan hemogoblin"
-        android:inputType="textPersonName"
+        android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/input_tdSis" />
+        app:layout_constraintTop_toBottomOf="@id/input_tdDis" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="388dp"
+        android:background="#FFFFFF"
+        android:src="@drawable/bg_red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

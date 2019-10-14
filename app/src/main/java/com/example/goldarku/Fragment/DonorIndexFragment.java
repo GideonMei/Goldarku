@@ -39,8 +39,8 @@ public class DonorIndexFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_donor_index, container, false);
         final EditText Text_usia = view.findViewById((R.id.input_usia));
         final EditText Text_weight = view.findViewById((R.id.input_weight));
-        final EditText Text_tdDis = view.findViewById((R.id.input_tdDis));
         final EditText Text_tdSis = view.findViewById((R.id.input_tdSis));
+        final EditText Text_tdDis = view.findViewById((R.id.input_tdDis));
         final EditText Text_hb = view.findViewById((R.id.input_hb));
 
         Button buttonDonor = view.findViewById(R.id.button_donor);
@@ -50,18 +50,18 @@ public class DonorIndexFragment extends Fragment {
                 if(mListener !=null){
                     String UsiaString = Text_usia.getText().toString();
                     String WeightString = Text_weight.getText().toString();
-                    String tdDisString = Text_tdDis.getText().toString();
                     String tdSisString = Text_tdSis.getText().toString();
+                    String tdDisString = Text_tdDis.getText().toString();
                     String hbString = Text_hb.getText().toString();
 
-                    if(!TextUtils.isEmpty(UsiaString)&&!TextUtils.isEmpty(WeightString)&&!TextUtils.isEmpty(tdDisString)
-                            &&!TextUtils.isEmpty(tdSisString)&&!TextUtils.isEmpty(hbString)){
+                    if(!TextUtils.isEmpty(UsiaString)&&!TextUtils.isEmpty(WeightString)&&!TextUtils.isEmpty(tdSisString)
+                            &&!TextUtils.isEmpty(tdDisString)&&!TextUtils.isEmpty(hbString)){
                         int usia = Integer.parseInt(UsiaString);
                         int weight = Integer.parseInt(WeightString);
-                        int tdDis = Integer.parseInt(tdDisString);
                         int tdSis = Integer.parseInt(tdSisString);
+                        int tdDis = Integer.parseInt(tdDisString);
                         int hb = Integer.parseInt(hbString);
-                        DonorDarah donorDarah = new DonorDarah(usia, weight, tdDis, tdSis, hb);
+                        DonorDarah donorDarah = new DonorDarah(usia, weight, tdSis, tdDis, hb);
                         mListener.onDonorButtonClicked(donorDarah.getIndex());
                     }else{
                         Toast.makeText(getActivity(), "Isi Semua Form Terlebih Dahulu", Toast.LENGTH_SHORT).show();

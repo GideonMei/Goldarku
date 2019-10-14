@@ -3,14 +3,10 @@ package com.example.goldarku;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
-import android.os.Handler;
+import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.goldarku.Activity.PrediksiGoldar;
-import com.example.goldarku.Activity.WelcomeActivity;
 import com.example.goldarku.Fragment.AboutFragment;
 import com.example.goldarku.Fragment.DonorIndexFragment;
 import com.example.goldarku.Fragment.MenuFragment;
@@ -37,19 +33,18 @@ public class MainActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_main);
         menuFragment = new MenuFragment();
         getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.exit_from_right, R.anim.exit_from_left)
                 .replace(R.id.fragment_container, menuFragment)
                 .commit();
         prediksiIndexFragment = new PrediksiIndexFragment();
         donorIndexFragment = new DonorIndexFragment();
         resultFragment = new ResultFragment();
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                Intent i = new Intent(MainActivity.this, MenuFragment.class);
-//                startActivity(i);
-//                finish();
-//            }
-//        }, 1000);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
     }
 
     @Override
@@ -57,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements
         // TODO: Tambahkan penanganan menu di sini
         if (item.getItemId() == R.id.menu_about) {
             getSupportFragmentManager().beginTransaction()
+                    .setCustomAnimations(R.anim.exit_from_right, R.anim.exit_from_left)
                     .replace(R.id.fragment_container, aboutFragment)
                     .addToBackStack(null)
                     .commit();
@@ -68,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void onPrediksiButtonClicked() {
         getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.exit_from_right, R.anim.exit_from_left)
                 .replace(R.id.fragment_container, prediksiIndexFragment)
                 .addToBackStack(null)
                 .commit();
@@ -76,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void onDonorButtonClicked() {
         getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.exit_from_right, R.anim.exit_from_left)
                 .replace(R.id.fragment_container, donorIndexFragment)
                 .addToBackStack(null)
                 .commit();
@@ -85,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements
     public void onPrediksiButtonClicked(String GolAnak) {
         resultFragment.setInformation(String.format("Kemungkinan anak anda memiliki golongan darah "+GolAnak));
         getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.exit_from_right, R.anim.exit_from_left)
                 .replace(R.id.fragment_container, resultFragment, "PREDIKSI")
                 .addToBackStack(null)
                 .commit();
@@ -94,19 +93,24 @@ public class MainActivity extends AppCompatActivity implements
     public void onTryAgainButtonClicked(String tag) {
         if (tag.equals("PREDIKSI")) {
             getSupportFragmentManager().beginTransaction()
+                    .setCustomAnimations(R.anim.exit_from_right, R.anim.exit_from_left)
                     .replace(R.id.fragment_container, prediksiIndexFragment)
+                    .addToBackStack(null)
                     .commit();
         } else if (tag.equals("DONOR")) {
             getSupportFragmentManager().beginTransaction()
+                    .setCustomAnimations(R.anim.exit_from_right, R.anim.exit_from_left)
                     .replace(R.id.fragment_container, donorIndexFragment)
+                    .addToBackStack(null)
                     .commit();
         }
     }
 
     @Override
     public void onDonorButtonClicked(String hasil) {
-            resultFragment.setInformation(String.format("Anda "+hasil+" untuk melakukan donor darah"));
+            resultFragment.setInformation(String.format("Anda "+hasil));
             getSupportFragmentManager().beginTransaction()
+                    .setCustomAnimations(R.anim.exit_from_right, R.anim.exit_from_left)
                     .replace(R.id.fragment_container, resultFragment, "DONOR")
                     .addToBackStack(null)
                     .commit();
