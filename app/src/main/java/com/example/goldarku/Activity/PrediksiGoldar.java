@@ -20,37 +20,37 @@ public class PrediksiGoldar {
     public String prediksi() {
         String GolAnak="";
         if (this.GolIbu.equals("A") && this.GolAyah.equals("A")) {
-            GolAnak = "A atau O";
+            GolAnak = "A(75) dan O(25)";
         }else if (this.GolIbu.equals("B") && this.GolAyah.equals("B")) {
-            GolAnak = "B atau O";
+            GolAnak = "B(75) dan O(25)";
         }else if(this.GolIbu.equals("AB")&&this.GolAyah.equals("AB")) {
-            GolAnak = "A, B, atau AB";
+            GolAnak = "A(25), B(25), dan AB(50)";
         }else if(this.GolIbu.equals("O")&&this.GolAyah.equals("O")) {
-            GolAnak = "O";
+            GolAnak = "O(100)";
         }else if(this.GolIbu.equals("A")&&this.GolAyah.equals("B")) {
-            GolAnak = "A, B, AB, atau O";
+            GolAnak = "A(25), B(25), AB(25), dan O(25)";
         }else if(this.GolIbu.equals("A")&&this.GolAyah.equals("AB")) {
-            GolAnak = "A, B, atau AB";
+            GolAnak = "A(50), B(25), dan AB(25)";
         }else if(this.GolIbu.equals("A")&&this.GolAyah.equals("O")) {
-            GolAnak = "A atau O";
+            GolAnak = "A(50) dan O(50)";
         }else if(this.GolIbu.equals("B")&&this.GolAyah.equals("A")) {
-            GolAnak = "A, B, AB, atau O";
+            GolAnak = "A(25), B(25), AB(25), dan O(25)";
         }else if(this.GolIbu.equals("B")&&this.GolAyah.equals("AB")) {
-            GolAnak = "A, B, atau AB";
+            GolAnak = "A(25), B(50), dan AB(25)";
         }else if(this.GolIbu.equals("B")&&this.GolAyah.equals("O")) {
-            GolAnak = "B atau O";
+            GolAnak = "B(50) dan O(50)";
         }else if(this.GolIbu.equals("AB")&&this.GolAyah.equals("A")) {
-            GolAnak = "A, B, atau AB";
+            GolAnak = "A(50), B(25), dan AB(25)";
         }else if(this.GolIbu.equals("AB")&&this.GolAyah.equals("B")) {
-            GolAnak = "A, B, atau AB";
+            GolAnak = "A(25), B(50), dan AB(25)";
         }else if(this.GolIbu.equals("AB")&&this.GolAyah.equals("O")) {
-            GolAnak = "A atau B";
+            GolAnak = "A(50) dan B(50)";
         }else if(this.GolIbu.equals("O")&&this.GolAyah.equals("A")) {
-            GolAnak = "A atau O";
+            GolAnak = "A(50) dan O(50)";
         }else if(this.GolIbu.equals("O")&&this.GolAyah.equals("B")) {
-            GolAnak = "B atau O";
+            GolAnak = "B(50) dan O(50)";
         }else if(this.GolIbu.equals("O")&&this.GolAyah.equals("AB")) {
-            GolAnak = "A atau B";
+            GolAnak = "A(50) dan B(50)";
         }else{
             GolAnak = "- (Inputan Tidak Valid!)";
         }

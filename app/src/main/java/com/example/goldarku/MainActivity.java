@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void onPrediksiButtonClicked(String GolAnak) {
-        resultFragment.setInformation(String.format("Kemungkinan anak anda memiliki golongan darah "+GolAnak));
+        resultFragment.setInformation(String.format("Kemungkinan anak anda memiliki golongan darah (persen) : "+GolAnak));
         getSupportFragmentManager().beginTransaction()
                 .setCustomAnimations(R.anim.exit_from_right, R.anim.exit_from_left)
                 .replace(R.id.fragment_container, resultFragment, "PREDIKSI")
