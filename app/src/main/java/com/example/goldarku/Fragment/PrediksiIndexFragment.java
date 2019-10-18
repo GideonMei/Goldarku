@@ -25,7 +25,7 @@ import com.example.goldarku.R;
  * to handle interaction events.
  */
 public class PrediksiIndexFragment extends Fragment {
-
+    EditText Text_GolDarIbu,Text_GolDarAyah;
     private OnFragmentInteractionListener mListener;
 
     public PrediksiIndexFragment() {
@@ -37,14 +37,15 @@ public class PrediksiIndexFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_prediksi_index, container, false);
-        final EditText Text_GolDarIbu = view.findViewById((R.id.input_goldaribu));
-        final EditText Text_GolDarAyah = view.findViewById((R.id.input_goldarayah));
+        Text_GolDarIbu = view.findViewById((R.id.input_goldaribu));
+        Text_GolDarAyah = view.findViewById((R.id.input_goldarayah));
 
         Button buttonPrediksi = view.findViewById(R.id.button_prediksi);
         buttonPrediksi.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 if(mListener !=null){
+
                     String GolIbuString = Text_GolDarIbu.getText().toString();
                     String GolAyahString = Text_GolDarAyah.getText().toString();
                     if(!TextUtils.isEmpty(GolAyahString)&&!TextUtils.isEmpty(GolIbuString)){
@@ -52,6 +53,8 @@ public class PrediksiIndexFragment extends Fragment {
                         String GolAyah = GolAyahString;
                         PrediksiGoldar prediksiGoldar = new PrediksiGoldar(GolIbu,GolAyah);
                         mListener.onPrediksiButtonClicked(prediksiGoldar.getIndex());
+                        Text_GolDarIbu.setText("");
+                        Text_GolDarAyah.setText("");
                     }else{
                         Toast.makeText(getActivity(), "Isi Golongan Darah Ibu dan Ayah", Toast.LENGTH_SHORT).show();
                     }
@@ -94,4 +97,6 @@ public class PrediksiIndexFragment extends Fragment {
         // TODO: Update argument type and name
         void onPrediksiButtonClicked(String GolAnak);
     }
+
+    
 }

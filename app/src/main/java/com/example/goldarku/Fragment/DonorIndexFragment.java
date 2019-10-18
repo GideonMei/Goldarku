@@ -24,7 +24,7 @@ import com.example.goldarku.R;
  * to handle interaction events.
  */
 public class DonorIndexFragment extends Fragment {
-
+    EditText Text_usia, Text_weight, Text_tdSis, Text_tdDis, Text_hb;
     private OnFragmentInteractionListener mListener;
 
     public DonorIndexFragment() {
@@ -37,11 +37,11 @@ public class DonorIndexFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_donor_index, container, false);
-        final EditText Text_usia = view.findViewById((R.id.input_usia));
-        final EditText Text_weight = view.findViewById((R.id.input_weight));
-        final EditText Text_tdSis = view.findViewById((R.id.input_tdSis));
-        final EditText Text_tdDis = view.findViewById((R.id.input_tdDis));
-        final EditText Text_hb = view.findViewById((R.id.input_hb));
+        Text_usia = view.findViewById((R.id.input_usia));
+        Text_weight = view.findViewById((R.id.input_weight));
+        Text_tdSis = view.findViewById((R.id.input_tdSis));
+        Text_tdDis = view.findViewById((R.id.input_tdDis));
+        Text_hb = view.findViewById((R.id.input_hb));
 
         Button buttonDonor = view.findViewById(R.id.button_donor);
         buttonDonor.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +63,11 @@ public class DonorIndexFragment extends Fragment {
                         int hb = Integer.parseInt(hbString);
                         DonorDarah donorDarah = new DonorDarah(usia, weight, tdSis, tdDis, hb);
                         mListener.onDonorButtonClicked(donorDarah.getIndex());
+                        Text_usia.setText("");
+                        Text_weight.setText("");
+                        Text_tdSis.setText("");
+                        Text_tdDis.setText("");
+                        Text_hb.setText("");
                     }else{
                         Toast.makeText(getActivity(), "Isi Semua Form Terlebih Dahulu", Toast.LENGTH_SHORT).show();
                     }

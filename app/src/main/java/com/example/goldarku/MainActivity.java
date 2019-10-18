@@ -2,6 +2,7 @@ package com.example.goldarku;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,15 +17,13 @@ import com.example.goldarku.Fragment.ResultFragment;
 public class MainActivity extends AppCompatActivity implements
         MenuFragment.OnFragmentInteractionListener,
         PrediksiIndexFragment.OnFragmentInteractionListener,
-        DonorIndexFragment.OnFragmentInteractionListener,
-        ResultFragment.OnFragmentInteractionListener {
+        DonorIndexFragment.OnFragmentInteractionListener{
 
     private AboutFragment aboutFragment;
     private MenuFragment menuFragment;
     private PrediksiIndexFragment prediksiIndexFragment;
     private DonorIndexFragment donorIndexFragment;
     private ResultFragment resultFragment;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,23 +86,6 @@ public class MainActivity extends AppCompatActivity implements
                 .replace(R.id.fragment_container, resultFragment, "PREDIKSI")
                 .addToBackStack(null)
                 .commit();
-    }
-
-    @Override
-    public void onTryAgainButtonClicked(String tag) {
-        if (tag.equals("PREDIKSI")) {
-            getSupportFragmentManager().beginTransaction()
-                    .setCustomAnimations(R.anim.exit_from_right, R.anim.exit_from_left)
-                    .replace(R.id.fragment_container, prediksiIndexFragment)
-                    .addToBackStack(null)
-                    .commit();
-        } else if (tag.equals("DONOR")) {
-            getSupportFragmentManager().beginTransaction()
-                    .setCustomAnimations(R.anim.exit_from_right, R.anim.exit_from_left)
-                    .replace(R.id.fragment_container, donorIndexFragment)
-                    .addToBackStack(null)
-                    .commit();
-        }
     }
 
     @Override

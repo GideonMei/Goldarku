@@ -14,15 +14,9 @@ import android.widget.TextView;
 
 import com.example.goldarku.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link ResultFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- */
+
 public class ResultFragment extends Fragment {
 
-    private OnFragmentInteractionListener mListener;
     private String information;
 
     public ResultFragment() {
@@ -37,35 +31,10 @@ public class ResultFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_result, container, false);
         TextView informationText = view.findViewById(R.id.text_information);
         informationText.setText(information);
-        Button tryAgainButton = view.findViewById(R.id.button_try_again);
-        tryAgainButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mListener != null) {
-                    Fragment fragment = getFragmentManager().findFragmentById(R.id.fragment_container);
-                    mListener.onTryAgainButtonClicked(fragment.getTag());
-                }
-            }
-        });
         return  view;
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
 
     /**
      * This interface must be implemented by activities that contain this
@@ -77,10 +46,6 @@ public class ResultFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onTryAgainButtonClicked(String tag);
-    }
 
     public void setInformation(String information) {
         this.information = information;
